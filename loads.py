@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import os
 import json
+import statsmodels.api as sm
 
 PATH_FOLDER = "MovieSummaries/"
 
@@ -79,3 +80,46 @@ def load_name_clusters():
     name_metadata = pd.read_csv(name_file_name, sep="\t", names=["Character name", "Freebase character/actor map ID"])
     return name_metadata
 
+
+def disagregate_list_feature(df, feature_name):
+    #Create new df
+    result_df = df.copy()
+    # Step 1: Get the unique set of languages
+    unique_features = set(feature for features in result_df[feature_name] for feature in features)
+
+    # Step 2: Create binary columns for each language
+    for feature in unique_features:
+        result_df[feature] = result_df[feature_name].apply(lambda x: feature in x)
+
+    # Step 3: Drop the original 'Languages' column
+    result_df.drop(feature_name, axis=1, inplace=True)
+
+    # Resulting DataFrame
+    return result_df
+
+def regression_analysis(df, revenue_string):
+    X = df.drop([revenue_string], axis=1)
+    y = df[revenue_string]
+
+    X = X.astype(int)
+
+    X = sm.add_constant(X)
+
+
+    model = sm.OLS(y, X).fit()
+
+    print(model.summary())
+    return model
+
+def display_regression_result(model):
+    # Extract coefficients and corresponding character names
+    coefficients = model.params[1:]  # Exclude the intercept
+    feature = coefficients.index
+    p_values = model.pvalues[1:]
+    # Create a DataFrame to store coefficients and character names
+    coefficients_df = pd.DataFrame({'Feature': feature, 'Coefficient': coefficients, 'p-value': p_values})
+    #print lines of 10 best and worst coefficients
+    print('Top 10 more successful features with coefficients and p-values:')
+    print(coefficients_df.sort_values(by='Coefficient', ascending=False).head(10))
+    print('Top 10 more successful features with coefficients and p-values:')
+    print(coefficients_df.sort_values(by='Coefficient', ascending=False).tail(10))
