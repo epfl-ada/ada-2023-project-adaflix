@@ -13,7 +13,8 @@ Imagine having a special tool that predicts if your movie will be a hit before y
 ## Proposed Additional Datasets:
 - IMDb dataset: We aim to broaden the way we define a movie's success beyond simple character and movie metrics by incorporating ratings of movies. To achieve this, we have obtained two datasets from IMDb, facilitating their integration with our existing movie data. We used the title-basics and ratings datasets to relate features from our original datasets and the new dataset in order to add ratings and votes to our initial features.[Download the IMDb dataset](https://developer.imdb.com/non-commercial-datasets/)
 - The Movie Dataset: A dataset comprising movie budgets is added, to enhance our analysis. It is added to the movie dataset due to its high relevance to revenue within the domain  surpassing other features in terms of direct correlation. This addition enriches our analysis by providing a more closely aligned and impactful factor for exploring relationships with box office revenue.[Download the Movie Dataset](https://www.kaggle.com/datasets/rounakbanik/the-movies-dataset?resource=download&select=movies_metadata.csv)
-
+- Inflation dataset : Since we want to compare the revenue of movies over time, we need to take into account the inflation. The CPI-U (Consumer Price Index for All Urban Consumers) is a common measure to do so, and we will use a table of it's annual values since 1913 to accordingly equalize the revenue of movies over time. 
+The dataset is available on the U.S. BUREAU OF LABOR STATISTICS website. [Download the Inflation dataset](https://data.bls.gov/timeseries/CUUR0000SA0?years_option=all_years)
 
 
 ## Methods:
