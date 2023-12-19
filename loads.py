@@ -8,15 +8,15 @@ PATH_FOLDER = "MovieSummaries/"
 
 def load_character_metadata():
     character_file_name = os.path.join(PATH_FOLDER, 'character.metadata.tsv')
-    names_1 = ["Wikipedia movie ID",
+    names_1 = ["Wikipedia_movie_ID",
                 "Freebase movie ID", 
-                "Movie release date", 
-                "Character name", 
+                "Movie_release_date",
+                "Character_name",
                 "Actor date of birth", 
-                "Actor gender", 
+                "Actor_gender",
                 "Actor height (in meters)", 
                 "Actor ethnicity (Freebase ID)",
-                "Actor name", 
+                "Actor_name",
                 "Actor age at movie release", 
                 "Freebase character/actor map ID", 
                 "Freebase character ID",
@@ -28,12 +28,12 @@ def load_character_metadata():
 
 def load_movie_metadata():
     movie_file_name = os.path.join(PATH_FOLDER, 'movie.metadata.tsv')
-    names_2 = ["Wikipedia movie ID", 
+    names_2 = ["Wikipedia_movie_ID",
                 "Freebase movie ID", 
-                "Movie name", 
-                "Movie release date", 
-                "Movie box office revenue", 
-                "Movie runtime", 
+                "Movie_name",
+                "Movie_release_date",
+                "Movie_box_office_revenue",
+                "Movie_runtime",
                 "Movie languages (Freebase ID:name tuples)",
                 "Movie countries (Freebase ID:name tuples)", 
                 "Movie genres (Freebase ID:name tuples)"]
@@ -68,11 +68,11 @@ def load_tvtropes():
     # Drop the original 'data' column
     tvtropes_metadata.drop('data', axis=1, inplace=True)
 
-    tvtropes_metadata.columns = [['Character role',
-                                  'Character name',
-                                  'Movie name',
+    tvtropes_metadata.columns = [['Character_role',
+                                  'Character_name',
+                                  'Movie_name',
                                   'Freebase character/actor map ID',
-                                  'Actor name']]
+                                  'Actor_name']]
     return tvtropes_metadata
 
 def load_name_clusters():
