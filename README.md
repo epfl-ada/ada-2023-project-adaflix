@@ -1,5 +1,8 @@
 # Movies that could have met a different success
 
+## Data Story
+The data story can be accessed [here](https://ousso11.github.io/ADAFlix)
+
 ## Abstract:
 Imagine having a special tool that predicts if your movie will be a hit before you even start filming. If your movie is missing some key ingredients, don't worry! This tool also teaches you from the success stories of movies that defied the odds. Armed with this wisdom, you enter the filmmaking adventure with confidence, turning challenges into opportunities. The project aims to explore the intriguing cases of movies  that should've been hits but missed the mark, and those surprising successes that defy the odds.  It consists of making a formula for a films’ success where the primary focus, lies in the outliers movies that diverge from conventional formula of success. We will then analyse case by case these outliers and try to find  global parameters and relationships explaining why films that should have made it, failed instead. By studying these cases, we're not simply telling stories, we're hunting for the universal reasons behind the reasons why success isn't always what it seems.
 
